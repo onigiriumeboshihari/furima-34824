@@ -3,11 +3,6 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
-    @user.last_name = '名字'
-    @user.first_name = '名前'
-    @user.last_kana = 'ミョウジ'
-    @user.first_kana = 'ナマエ'
-    @user.birthday = '1930-01-01'
   end
 
   describe '新規登録/ユーザー情報' do
@@ -70,6 +65,24 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = 'hoge2'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
+      end
+      it 'パスワードが半角英字のみでは登録できない' do
+        @user.password = 'hogehoge'
+        @user.password_confirmation = 'hogehoge'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて半角で設定してください')
+      end
+      it 'パスワードが半角数字のみでは登録できない' do
+        @user.password = '222222'
+        @user.password_confirmation = '222222'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて半角で設定してください')
+      end
+      it 'パスワードが全角では登録できない' do
+        @user.password = 'ホゲホゲホゲ'
+        @user.password_confirmation = 'ホゲホゲホゲ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて半角で設定してください')
       end
       it 'メールアドレスが@なしでは登録できない' do
         @user.email = 'testpass'
