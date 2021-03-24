@@ -34,8 +34,8 @@ class Item < ApplicationRecord
       validates :arrive_in_id
     end
 
-    validates :price, numericality: { only_integer: true }
-    validates :price, numericality: { greater_than_or_equal_to: 300 }
-    validates :price, numericality: { less_than_or_equal_to: 9999999 }
+    validates :price, numericality: { only_integer: true },
+    numericality: { greater_than_or_equal_to: 300 },
+    numericality: { less_than_or_equal_to: 9999999 }
   end
 end
