@@ -36,27 +36,27 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーが---では登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
       it '商品の状態が---では登録できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition must be other than 1")
+        expect(@item.errors.full_messages).to include('Condition must be other than 1')
       end
       it '配送料の負担が---では登録できない' do
         @item.shipping_payer_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping payer must be other than 1")
+        expect(@item.errors.full_messages).to include('Shipping payer must be other than 1')
       end
       it '発送元の地域が---では登録できない' do
         @item.shipped_from_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipped from must be other than 1")
+        expect(@item.errors.full_messages).to include('Shipped from must be other than 1')
       end
       it '発送日までの日数が---では登録できない' do
         @item.arrive_in_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Arrive in must be other than 1")
+        expect(@item.errors.full_messages).to include('Arrive in must be other than 1')
       end
       it '販売価格が空では登録できない' do
         @item.price = ''
@@ -66,32 +66,32 @@ RSpec.describe Item, type: :model do
       it '販売価格が全角表記では登録できない' do
         @item.price = '300円'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it '販売価格が半角英字表記では登録できない' do
         @item.price = '300en'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it '販売価格が半角記号表記では登録できない' do
         @item.price = '¥9,999,999'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it '販売価格が¥300未満では登録できない' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it '販売価格が¥10,000,000以上では登録できない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'userが紐づいていないと登録できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end

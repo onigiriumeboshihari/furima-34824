@@ -22,7 +22,7 @@ class Item < ApplicationRecord
     validates :name
     validates :introduction
     validates :price, numericality: { only_integer: true },
-      inclusion: { in: 300..9999999 }
+                      inclusion: { in: 300..9_999_999 }
   end
 
   with_options numericality: { other_than: 1 } do
