@@ -4,17 +4,9 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :condition
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :ShippingPayer
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :ShippedFrom
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :ArriveIn
 
   with_options presence: true do
