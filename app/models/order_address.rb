@@ -1,7 +1,7 @@
 class OrderAddress
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number,
-                :order_id, :token
+                :token
 
   with_options presence: true do
     validates :user_id
@@ -10,7 +10,7 @@ class OrderAddress
     validates :city
     validates :house_number
     validates :phone_number,
-              numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 99_999_999_999 }
+              numericality: { only_integer: true, greater_than_or_equal_to: 000000000000, less_than_or_equal_to: 99_999_999_999 }
     validates :token
   end
 

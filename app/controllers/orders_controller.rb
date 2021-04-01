@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     @order_address = OrderAddress.new
+    @shipping_payer = @item.ShippingPayer.name
   end
 
   def create

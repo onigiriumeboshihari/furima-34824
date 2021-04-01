@@ -50,5 +50,4 @@ class Prefecture < ActiveHash::Base
     { id: 48, name: '沖縄県' }
   ]
   include ActiveHash::Associations
-  # has_many :addresses
 end
